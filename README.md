@@ -96,10 +96,40 @@ restful-booker-performance-testing/
  
 
 ### 2. Endurance Test
-- **Threads:** 50  
-- **Ramp-Up:** 10s  
-- **Duration:** 2 hours  
-- ✅ Checks stability over long time  
+
+The **Endurance Test** (or Soak Test) checks how the system performs under **continuous moderate load** over time.  
+It helps identify performance degradation, errors, or stability issues.
+
+### Test Configuration
+- **Tool**: Apache JMeter  
+- **Target API**: Restful Booker  
+- **Threads (Users)**: 100  
+- **Ramp-Up Time**: 20 seconds  
+- **Test Duration**: 6 minutes  
+
+### Results Summary
+- **Total Requests Executed**: 113,243  
+- **Total Errors**: 0.17%  
+- **Error Types**: HTTP 403, 404, 500, Timeout  
+- **Throughput (TPS)**: 314  
+- **Average Transactions Per Second (Overall)**: 309  
+- **Peak TPS**: 311  
+
+### Response Time Metrics
+- **Average Response Time**: 309 ms  
+- **90th Percentile**: 314 ms  
+- **95th Percentile**: 320 ms  
+- **Minimum Response Time**: 268 ms  
+- **Maximum Response Time**: 6,946 ms  
+
+#### Key Observations
+- Server sustained **100 concurrent users** over **6 minutes** with **minimal errors (~0.17%)**.  
+- **Response times** remained stable (avg ~309 ms) with a few spikes (max 6,946 ms).  
+- **Throughput** stayed consistent, averaging ~309 TPS.  
+- Errors were rare and likely caused by occasional request timeouts or server-side throttling.
+
+The system can **reliably handle continuous moderate load (100 users / 6 min)** with stable performance and very low error rate.  
+No performance degradation or resource issues were observed during the test.
 
 ### 3. Spike Test
 - **Threads:** Jump from 10 → 500 in 5s  
