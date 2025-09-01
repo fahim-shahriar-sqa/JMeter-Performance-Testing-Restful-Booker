@@ -67,11 +67,33 @@ restful-booker-performance-testing/
 
 ## 📊 Test Scenarios
 
-### 1. Load Test
-- **Threads (Users):** 100  
-- **Ramp-Up:** 20s  
-- **Loop Count:** 10  
-- ✅ Checks performance under expected normal load  
+# Load Test Summary Report
+
+**Purpose:** Measure API performance under increasing concurrent load.
+
+**Test Environment:** jmeter  
+
+**Execution Details:** Each test executed with defined threads (concurrent users) and loop counts.  
+
+---
+
+## Summary Table
+
+| Threads | Loop | Total Requests | Avg TPS | Errors | Error Rate |
+|---------|------|----------------|---------|--------|------------|
+| 300     | 10   | 15,000         | 151/s   | 0      | 0%         |
+| 400     | 10   | 20,000         | 194/s   | 134    | 0.67%      |
+
+---
+
+## Observations
+
+-  At **300 users**, system handled **15,000 requests** smoothly with **0% error rate**.  
+-  At **400 users**, throughput increased to **194 TPS**, but **134 requests failed (0.67% errors)**, indicating potential bottlenecks.  
+-  Increasing load improved TPS but also introduced errors, suggesting the system is nearing its performance threshold.  
+
+---
+ 
 
 ### 2. Endurance Test
 - **Threads:** 50  
