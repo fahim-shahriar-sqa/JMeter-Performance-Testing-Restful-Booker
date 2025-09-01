@@ -77,7 +77,7 @@ restful-booker-performance-testing/
 
 ---
 
-## Summary Table
+### Summary Table
 
 | Threads | Loop | Total Requests | Avg TPS | Errors | Error Rate |
 |---------|------|----------------|---------|--------|------------|
@@ -86,7 +86,7 @@ restful-booker-performance-testing/
 
 ---
 
-## Observations
+### Observations
 
 -  At **300 users**, system handled **15,000 requests** smoothly with **0% error rate**.  
 -  At **400 users**, throughput increased to **194 TPS**, but **134 requests failed (0.67% errors)**, indicating potential bottlenecks.  
