@@ -67,7 +67,7 @@ restful-booker-performance-testing/
 
 ## 📊 Test Scenarios
 
-# Load Test Summary Report
+### 1. Load Test
 
 **Purpose:** Measure API performance under increasing concurrent load.
 
