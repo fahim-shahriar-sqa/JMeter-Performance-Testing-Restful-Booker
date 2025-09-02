@@ -19,9 +19,7 @@ It covers **Load Test, Endurance Test, Spike Test, Stress Test, and Volume Test*
 - Validate API performance under different conditions:  
   - Normal load  
   - Long-duration usage  
-  - Sudden traffic spikes  
   - Increasing stress until failure  
-  - High data volume  
 - Generate detailed HTML reports for analysis  
 
 ---
@@ -33,20 +31,17 @@ restful-booker-performance-testing/
 ├── TestPlans/                  # JMeter .jmx files
 │   ├── load_test.jmx
 │   ├── endurance_test.jmx
-│   ├── spike_test.jmx
 │   ├── stress_test.jmx
-│   ├── volume_test.jmx
+
 │
 ├── Reports/                    # Generated HTML reports
 │   ├── load_test_report/
 │   ├── endurance_test_report/
-│   ├── spike_test_report/
 │   ├── stress_test_report/
-│   ├── volume_test_report/
 │
 ├── Screenshots/                # Screenshots of graphs & results
 │   ├── load_test_summary.png
-│   ├── spike_test_response_times.png
+│   ├── endurance_test_response_.png
 │   ├── stress_test_throughput.png
 │
 └── README.md                   # Project documentation
@@ -171,7 +166,7 @@ jmeter -n -t TestPlans/load_test.jmx -l Reports/load_test.jtl -e -o Reports/load
 
 ## Sample Reports & Screenshots
 - Load Test Report: `Screenshots/load_test_summary.png`  
-- Spike Test Report: `Screenshots/spike_test_response_times.png`  
+- Endurance Test Report: `Screenshots/spike_test_response_times.png`  
 - Stress Test Throughput: `Screenshots/stress_test_throughput.png`  
 
 ---
@@ -188,10 +183,4 @@ jmeter -n -t TestPlans/load_test.jmx -l Reports/load_test.jtl -e -o Reports/load
 This project demonstrates end-to-end performance testing of a REST API using Apache JMeter.  
 It highlights test design, execution, reporting, and analysis across multiple performance scenarios.  
 
----
-
-## Author
-**Fahim Shahriar**  
-- Email:  
-- LinkedIn:  
-- GitHub:  
+--- 
