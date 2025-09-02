@@ -1,31 +1,32 @@
+
 # Restful Booker - Performance Testing with JMeter
 
-This project demonstrates **performance testing** of the [Restful Booker](https://restful-booker.herokuapp.com/) API using **Apache JMeter**.  
+This project demonstrates performance testing of the [Restful Booker](https://restful-booker.herokuapp.com/) API using **Apache JMeter**.  
 It covers **Load Test, Endurance Test, Spike Test, Stress Test, and Volume Test** with reports and analysis.  
 
 ---
 
-## 🛠 Tools & Technologies
-- **Apache JMeter** (5.x)
-- **Java** (JDK 8+)
-- **Restful Booker API**
-- **GitHub** (for version control and portfolio showcase)
+## Tools & Technologies
+- Apache JMeter (5.x)  
+- Java (JDK 8+)  
+- Restful Booker API  
+- GitHub (for version control and portfolio showcase)  
 
 ---
 
-## 🎯 Objectives
-- Simulate real-world traffic on Restful Booker APIs
-- Validate API performance under different conditions:
-  - Normal load
-  - Long-duration usage
-  - Sudden traffic spikes
-  - Increasing stress until failure
-  - High data volume
-- Generate detailed HTML reports for analysis
+## Objectives
+- Simulate real-world traffic on Restful Booker APIs  
+- Validate API performance under different conditions:  
+  - Normal load  
+  - Long-duration usage  
+  - Sudden traffic spikes  
+  - Increasing stress until failure  
+  - High data volume  
+- Generate detailed HTML reports for analysis  
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 ```
 restful-booker-performance-testing/
 │
@@ -53,7 +54,7 @@ restful-booker-performance-testing/
 
 ---
 
-## 🔗 APIs Tested
+## APIs Tested
 - `POST /auth` → CreateToken  
 - `GET /booking` → GetBookingIds  
 - `GET /booking/{id}` → GetBooking  
@@ -65,94 +66,97 @@ restful-booker-performance-testing/
 
 ---
 
-## 📊 Test Scenarios
+## Test Scenarios
 
 ### 1. Load Test
 
-**Purpose:** Measure API performance under increasing concurrent load.
+**Purpose:** Measure API performance under increasing concurrent load.  
+**Environment:** Apache JMeter  
+**Execution:** Defined threads (users) with loop counts.  
 
-**Test Environment:** jmeter  
-
-**Execution Details:** Each test executed with defined threads (concurrent users) and loop counts.  
-
----
-
-### Summary Table
+**Summary Table**
 
 | Threads | Loop | Total Requests | Avg TPS | Errors | Error Rate |
 |---------|------|----------------|---------|--------|------------|
 | 300     | 10   | 15,000         | 151/s   | 0      | 0%         |
 | 400     | 10   | 20,000         | 194/s   | 134    | 0.67%      |
 
----
-
-### Observations
-
--  At **300 users**, system handled **15,000 requests** smoothly with **0% error rate**.  
--  At **400 users**, throughput increased to **194 TPS**, but **134 requests failed (0.67% errors)**, indicating potential bottlenecks.  
--  Increasing load improved TPS but also introduced errors, suggesting the system is nearing its performance threshold.  
+**Observations**
+- At 300 users, system handled 15,000 requests smoothly with 0% error rate.  
+- At 400 users, throughput increased to 194 TPS, but 134 requests failed (0.67% errors).  
+- System shows signs of nearing its performance threshold beyond 400 concurrent users.  
 
 ---
- 
 
 ### 2. Endurance Test
 
-The **Endurance Test** (or Soak Test) checks how the system performs under **continuous moderate load** over time.  
-It helps identify performance degradation, errors, or stability issues.
+**Purpose:** Verify stability under continuous moderate load.  
 
-### Test Configuration
-- **Tool**: Apache JMeter  
-- **Target API**: Restful Booker  
-- **Threads (Users)**: 100  
-- **Ramp-Up Time**: 20 seconds  
-- **Test Duration**: 6 minutes  
+**Configuration**
+- Threads (Users): 100  
+- Ramp-Up Time: 20 seconds  
+- Duration: 6 minutes  
 
-### Results Summary
-- **Total Requests Executed**: 113,243  
-- **Total Errors**: 0.17%  
-- **Error Types**: HTTP 403, 404, 500, Timeout  
-- **Throughput (TPS)**: 314  
-- **Average Transactions Per Second (Overall)**: 309  
-- **Peak TPS**: 311  
+**Results**
+- Total Requests: 113,243  
+- Error Rate: 0.17%  
+- Throughput: 314 TPS  
+- Average TPS: 309  
+- Peak TPS: 311  
 
-### Response Time Metrics
-- **Average Response Time**: 309 ms  
-- **90th Percentile**: 314 ms  
-- **95th Percentile**: 320 ms  
-- **Minimum Response Time**: 268 ms  
-- **Maximum Response Time**: 6,946 ms  
+**Response Times**
+- Average: 309 ms  
+- 90th Percentile: 314 ms  
+- 95th Percentile: 320 ms  
+- Minimum: 268 ms  
+- Maximum: 6,946 ms  
 
-#### Key Observations
-- Server sustained **100 concurrent users** over **6 minutes** with **minimal errors (~0.17%)**.  
-- **Response times** remained stable (avg ~309 ms) with a few spikes (max 6,946 ms).  
-- **Throughput** stayed consistent, averaging ~309 TPS.  
-- Errors were rare and likely caused by occasional request timeouts or server-side throttling.
-
-The system can **reliably handle continuous moderate load (100 users / 6 min)** with stable performance and very low error rate.  
-No performance degradation or resource issues were observed during the test.
-
-### 3. Spike Test
-- **Threads:** Jump from 10 → 500 in 5s  
-- **Ramp-Up:** 5s  
-- **Loop Count:** 5  
-- ✅ Checks reaction to sudden traffic surge  
-
-### 4. Stress Test
-- **Threads:** Start at 100 → increase to 200, 400, 800  
-- **Ramp-Up:** 30s each step  
-- ✅ Identifies breaking point under extreme load  
-
-### 5. Volume Test
-- **Threads:** 20  
-- **Ramp-Up:** 10s  
-- **Loop Count:** 10  
-- **Payload:** Large booking JSON (big request body)  
-- ✅ Validates system behavior with heavy data  
+**Observations**
+- Server sustained 100 concurrent users over 6 minutes with minimal errors.  
+- Average response time ~309 ms, stable with occasional spikes.  
+- Throughput remained consistent.  
+- No significant degradation or instability observed.  
 
 ---
 
-## 🖥️ How to Run
-Run any test plan in **non-GUI mode** (recommended for reporting):
+### 3. Stress Test
+
+**Purpose:** Identify limits and performance degradation points under extreme load.  
+
+**Configuration**
+
+| Test File | Threads | Ramp-Up Time (s) | Loop Count |
+|-----------|---------|------------------|------------|
+| restful_booker_stress_T1500_R20_L10.jmx | 1500 | 20 | 10 |
+| restful_booker_stress_T2500_R20_L10.jmx | 2500 | 20 | 10 |
+
+**Results – 1500 Users**
+- Average TPS: 645.5  
+- Avg Response Time: 1503 ms  
+- 90th Percentile: 3554 ms  
+- 95th Percentile: 3731 ms  
+- Min: 267 ms  
+- Max: 7040 ms  
+- Errors: Not fully available  
+
+**Results – 2500 Users**
+- Average TPS: 578.8  
+- Avg Response Time: 2616 ms  
+- 90th Percentile: 5424 ms  
+- 95th Percentile: 7763 ms  
+- Min: 266 ms  
+- Max: 41,255 ms  
+- Errors: 1.69%  
+
+**Observations**
+- Stable up to ~1500 users with acceptable response times (<4s for 95%).  
+- Beyond 2000 users, significant degradation: higher latencies, error rates, and instability.  
+
+---
+
+## How to Run
+
+Run tests in non-GUI mode (recommended):
 
 ```bash
 jmeter -n -t TestPlans/load_test.jmx -l Reports/load_test.jtl -e -o Reports/load_test_report
@@ -165,34 +169,29 @@ jmeter -n -t TestPlans/load_test.jmx -l Reports/load_test.jtl -e -o Reports/load
 
 ---
 
-## 📸 Sample Reports & Screenshots
-### Load Test Report
-![Load Test Summary](Screenshots/load_test_summary.png)
-
-### Spike Test Report
-![Spike Test Response Times](Screenshots/spike_test_response_times.png)
-
-### Stress Test Throughput
-![Stress Test Throughput](Screenshots/stress_test_throughput.png)
+## Sample Reports & Screenshots
+- Load Test Report: `Screenshots/load_test_summary.png`  
+- Spike Test Report: `Screenshots/spike_test_response_times.png`  
+- Stress Test Throughput: `Screenshots/stress_test_throughput.png`  
 
 ---
 
-## 📈 Key Findings
-- Average response time under load: **~200ms**  
-- System stable up to **400 concurrent users** before errors appear  
-- Spike traffic handled but latency increased by **x2**  
-- Endurance test showed **consistent performance over 2 hours**  
+## Key Findings
+- Average response time under load: ~200 ms  
+- System stable up to 400 concurrent users before errors appear  
+- Spike traffic doubled latency but system remained functional  
+- Endurance test showed consistent performance over 6 minutes  
 
 ---
 
-## ✅ Conclusion
-This project demonstrates **end-to-end performance testing** of a REST API using JMeter.  
-It highlights different performance scenarios and how to analyze reports for insights.  
+## Conclusion
+This project demonstrates end-to-end performance testing of a REST API using Apache JMeter.  
+It highlights test design, execution, reporting, and analysis across multiple performance scenarios.  
 
 ---
 
-## 👨‍💻 Author
+## Author
 **Fahim Shahriar**  
-- 📧 Email: 
-- 🌐 LinkedIn: 
-- 💻 GitHub: 
+- Email:  
+- LinkedIn:  
+- GitHub:  
