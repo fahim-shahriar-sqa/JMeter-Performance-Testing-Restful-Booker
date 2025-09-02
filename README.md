@@ -165,9 +165,35 @@ jmeter -n -t TestPlans/load_test.jmx -l Reports/load_test.jtl -e -o Reports/load
 ---
 
 ## Sample Reports & Screenshots
-- Load Test Report: `Screenshots/load_test_summary.png`  
-- Endurance Test Report: `Screenshots/spike_test_response_times.png`  
-- Stress Test Throughput: `Screenshots/stress_test_throughput.png`  
+## 📊 Screenshots
+
+### 🔹 Load Test
+- **300 Threads**
+  
+  ![Load Test - T300 R100 L10](https://drive.google.com/uc?export=view&id=1QwiFtvfaa_5cFHM5EDGmDp5XBHNlCuQ-)
+
+- **400 Threads**
+  
+  ![Load Test - T400 R100 L10](https://drive.google.com/uc?export=view&id=1XbYKayS-j1lIHdBrD5-G4G-t6nAmWWgI)
+
+---
+
+### 🔹 Endurance Test
+- **Summary Report**
+  
+  ![Endurance Summary Report](https://drive.google.com/uc?export=view&id=1HlBnvsVvGyDF_TSqSleAu4frS2eIo85K)
+
+---
+
+### 🔹 Stress Test
+- **1500 Threads**
+  
+  ![Stress Test - T1500 R20 L10 Summary Table](https://drive.google.com/uc?export=view&id=1eWzE0VXajOUjzRQKR2uFzi2ouQdfHGJ6)
+
+- **2500 Threads**
+  
+  ![Stress Test - T2500 R20 L10 Summary Table](https://drive.google.com/uc?export=view&id=1IWoVbIPYv9e4zi-A5QKywxFYQzkPrrpj)
+
 
 ---
 
